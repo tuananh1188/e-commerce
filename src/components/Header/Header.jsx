@@ -1,9 +1,73 @@
-import React from 'react'
+import BoxIcon from './boxIcon/boxIcon';
+import { dataBoxIcon, dataMenu } from './constants';
+import Menu from './Menu/Menu';
+import styles from './styles.module.scss';
+import logo from '@images/Logo-retina.webp';
+import reloadIcon from '@icons/reloadIcon.svg';
+import heartIcon from '@icons/heartIcon.svg';
+import cartIcon from '@icons/cartIcon.svg';
 
 function MyHeader() {
-  return (
-    <div>MyHeader</div>
-  )
+    const {
+        containerMenu,
+        containerBoxIcon,
+        containerHeader,
+        containerBox,
+        container
+    } = styles;
+    return (
+        <div className={container}>
+            <div className={containerHeader}>
+                <div className={containerBox}>
+                    <div className={containerBoxIcon}>
+                        {dataBoxIcon.map((item, index) => {
+                            return (
+                                <BoxIcon
+                                    type={item.type}
+                                    href={item.href}
+                                    key={index}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className={containerMenu}>
+                        {dataMenu.slice(0, 3).map((item, index) => {
+                            return (
+                                <Menu
+                                    content={item.content}
+                                    href={item.href}
+                                    key={index}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+                <div>
+                    <img src={logo} alt='logo' width={153} />
+                </div>
+                <div className={containerBox}>
+                    <div className={containerMenu}>
+                        {dataMenu
+                            .slice(3, dataMenu.length)
+                            .map((item, index) => {
+                                return (
+                                    <Menu
+                                        content={item.content}
+                                        href={item.href}
+                                        key={index}
+                                    />
+                                );
+                            })}
+                    </div>
+                    <div className={containerBoxIcon}>
+                        <img src={reloadIcon} alt='reloadIcon' width={26} />
+                        <img src={heartIcon} alt='heartIcon' width={26} />
+                        <img src={cartIcon} alt='cartIcon' width={26} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default MyHeader;
