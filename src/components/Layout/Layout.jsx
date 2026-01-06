@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-function MyLayout({ children }) {
+function MainLayout({ children }) {
     const {wrapLayout, container} = styles;
     return (
         <main className={wrapLayout}>
@@ -9,4 +9,4 @@ function MyLayout({ children }) {
     );
 }
 
-export default MyLayout;
+export default MainLayout;

@@ -1,20 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import HomePage from './components/HomePage/HomePage'
-
+import { useState } from 'react';
+import './App.css';
+import HomePage from '@components/HomePage/HomePage';
 
 function App() {
-  
-
-  return (
-    <>
-    
-      <HomePage/>
-      
-      
-      
-    </>
-  )
+    return (
+        <>
+            <HomePage />
+        </>
+    );
 }
 
-export default App
+export default App;
