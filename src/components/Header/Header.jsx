@@ -1,4 +1,4 @@
-import BoxIcon from './boxIcon/boxIcon';
+import BoxIcon from './BoxIcon/BoxIcon'
 import { dataBoxIcon, dataMenu } from './constants';
 import Menu from './Menu/Menu';
 import styles from './styles.module.scss';

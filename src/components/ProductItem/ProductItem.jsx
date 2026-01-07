@@ -1,19 +1,40 @@
 import styles from './styles.module.scss';
+import reloadIcon from '@icons/reloadIcon.svg';
+import heartIcon from '@icons/heartIcon.svg';
+import cartIcon from '@icons/cartIcon.svg';
 
-function ProductItem() {
-    const { boxImg,showImgWhenHover,showFncWhenHover } = styles;
+function ProductItem({ src, prevSrc, name, price }) {
+
+    const { boxImg, showImgWhenHover, showFncWhenHover, boxIcon, title, priceClass } = styles;
     return (
-        <div className={boxImg}>
-            <img
-                src='https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min-285x340.jpg'
-                alt=''
-            />
-            <img
-                src='https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min-285x340.jpg'
-                alt=''
-                className={showImgWhenHover}
-            />
-            <div className={showFncWhenHover}>zxc</div>
+        <div>
+            <div className={boxImg}>
+                <img
+                    src={src}
+                    alt=''
+                />
+                <img
+                    src={prevSrc}
+                    alt=''
+                    className={showImgWhenHover}
+                />
+                <div className={showFncWhenHover}>
+                    <div className={boxIcon}>
+                        <img src={cartIcon} alt='' />
+                    </div>
+                    <div className={boxIcon}>
+                        <img src={heartIcon} alt='' />
+                    </div>
+                    <div className={boxIcon}>
+                        <img src={reloadIcon} alt='' />
+                    </div>
+                    <div className={boxIcon}>
+                        <img src={cartIcon} alt='' />
+                    </div>
+                </div>
+            </div>
+            <div className={title}>{name}</div>
+            <div className={priceClass}>{price}</div>
         </div>
     );
 }
