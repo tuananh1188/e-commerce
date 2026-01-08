@@ -7,13 +7,13 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../apis/productsService';
 import PopularProduct from '../PopularProduct/PopularProduct';
 import SaleHomepage from '../SaleHomepage/SaleHomepage';
+import MyFooter from '../Footer/Footer';
 
 function HomePage() {
-
     const [listProducts, setListProducts] = useState([]);
     useEffect(() => {
         getProducts().then((res) => {
-            setListProducts(res.contents)
+            setListProducts(res.contents);
         });
     }, []);
     return (
@@ -22,10 +22,10 @@ function HomePage() {
             <Banner />
             <Info />
             <AdvanceHeadling />
-            <HeadingListProducts data={listProducts.slice(0,2)} />
-            <PopularProduct data={listProducts.slice(2,listProducts.length)}/>
-            <SaleHomepage/>
-            <div style={{ height: '200px' }}></div>
+            <HeadingListProducts data={listProducts.slice(0, 2)} />
+            <PopularProduct data={listProducts.slice(2, listProducts.length)} />
+            <SaleHomepage />
+            <MyFooter />
         </>
     );
 }
