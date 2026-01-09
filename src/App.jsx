@@ -1,26 +1,28 @@
-import { Suspense, useState } from 'react';
+import { Suspense} from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { routers } from './routers/routers';
-
+import { SideBarProvider } from '@/contexts/SideBar';
 
 function App() {
     return (
-        <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    {routers.map((item, index) => {
-                        return (
-                            <Route
-                                path={item.path}
-                                element={<item.component/>}
-                                key={index}
-                            />
-                        );
-                    })}
-                </Routes>
-            </Suspense>
-        </BrowserRouter>
+        <SideBarProvider>
+            <BrowserRouter>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        {routers.map((item, index) => {
+                            return (
+                                <Route
+                                    path={item.path}
+                                    element={<item.component />}
+                                    key={index}
+                                />
+                            );
+                        })}
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
+        </SideBarProvider>
     );
 }
 

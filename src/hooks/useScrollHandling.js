@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from "react";
+
 const useScrollHandling = () => {
     const [scrollDriction, setScrollDriction] = useState(null);
     const previousScrollPosition = useRef(0);
