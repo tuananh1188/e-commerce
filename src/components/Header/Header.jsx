@@ -25,15 +25,17 @@ function MyHeader() {
     const { scrollPosition } = useScrollHandling();
     const [fixePosition, setFixedPosition] = useState(false);
 
-    const { isOpen , setIsOpen} = useContext(SideBarContext);
+    const { setIsOpen, setType } = useContext(SideBarContext);
 
-    console.log(isOpen);
-
+    const handleOpenSideBar = (type) => {
+        setIsOpen(true);
+        setType(type);
+    };
 
     useEffect(() => {
         setFixedPosition(scrollPosition > 80);
     }, [scrollPosition]);
-    
+
     return (
         <div
             className={classNames(container, topHeader, {
@@ -60,7 +62,6 @@ function MyHeader() {
                                     content={item.content}
                                     href={item.href}
                                     key={index}
-                                    
                                 />
                             );
                         })}
@@ -79,15 +80,29 @@ function MyHeader() {
                                         content={item.content}
                                         href={item.href}
                                         key={index}
-                                        setIsOpen={setIsOpen}
                                     />
                                 );
                             })}
                     </div>
                     <div className={containerBoxIcon}>
-                        <img src={reloadIcon} alt='reloadIcon' width={26} />
-                        <img src={heartIcon} alt='heartIcon' width={26} />
-                        <img src={cartIcon} alt='cartIcon' width={26} />
+                        <img
+                            src={reloadIcon}
+                            alt='reloadIcon'
+                            width={26}
+                            onClick={() => handleOpenSideBar('compare')}
+                        />
+                        <img
+                            src={heartIcon}
+                            alt='heartIcon'
+                            width={26}
+                            onClick={() => handleOpenSideBar('wishlist')}
+                        />
+                        <img
+                            src={cartIcon}
+                            alt='cartIcon'
+                            width={26}
+                            onClick={() => handleOpenSideBar('cart')}
+                        />
                     </div>
                 </div>
             </div>
